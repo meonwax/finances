@@ -1,0 +1,4 @@
+Links:
+
+https://scotch.io/tutorials/angularjs-best-practices-directory-structure
+http://www.lukew.com/ff/entry.asp?1950
