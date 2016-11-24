@@ -1,0 +1,93 @@
+{% extends "base.twig" %}
+{% block title %}Übersicht{% endblock %}
+{% block content %}
+
+{# Button bar #}
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success">
+        Neuer Eintrag
+      </button>
+      <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#filter">
+        <i class="fa fa-filter"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+{# Filter #}
+<div class="row collapse" id="filter">
+  <div class="col-md-12">
+    <div class="card card-block">
+      TODO: Filter
+    </div>
+  </div>
+</div>
+
+{# Overview table #}
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Kategorie</th>
+          <th>Beschreibung</th>
+          <th>Zuordnung</th>
+          <th class="text-xs-right">Preis</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for expense in expenses %}
+        <tr>
+          <td>
+            <i class="fa fa-fw fa-{{ expense.category.class }}"></i>
+            {{ expense.category.name }}
+          </td>
+          <td>
+            {% if expense.description %}
+            {{ expense.description }}
+            {% else %}
+            -
+            {% endif %}
+          </td>
+          <td>
+            <i class="fa fa-fw fa-{{ expense.person.class }}"></i>
+            {{ expense.person.name }}
+          </td>
+          <td class="text-xs-right">{{ expense.price | number_format(2, ',', '.') }} €</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{# Pager #}
+<div class="row">
+  <div class="col-md-12">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item {{ expenses.currentPage() == 1 ? 'disabled' }}">
+          <a class="page-link" href="{{ expenses.previousPageUrl() }}">
+            <span>&laquo;</span>
+          </a>
+        </li>
+        {% for i in 1..totalPages %}
+        <li class="page-item {{ expenses.currentPage() == i ? 'active' }}">
+          <a class="page-link" href="{{ expenses.url(i) }}">{{ i }}</a>
+        </li>
+        {% endfor %}
+        <li class="page-item {{ not expenses.hasMorePages() ? 'disabled' }}">
+          <a class="page-link" href="{{ expenses.nextPageUrl() }}">
+            <span>&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+{% endblock %}
