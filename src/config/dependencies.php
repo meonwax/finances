@@ -25,6 +25,6 @@ $container['logger'] = function ($container) {
 // Override the default Not Found Handler
 $container['notFoundHandler'] = function ($container) {
   return function ($request, $response) use ($container) {
-    return $container['view']->render($response, '404.html')->withStatus(404);
+    return $container['view']->render($response, '404.twig')->withStatus(404);
   };
 };
