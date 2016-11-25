@@ -24,21 +24,17 @@
       <div class="form-group">
         <label for="category">Kategorie</label>
         <select class="form-control" id="category" name="category">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="form-group">
         <label for="person">Zuordnung</label>
         <select class="form-control" id="person" name="person">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          {% for person in persons %}
+          <option value="{{ person.id }}">{{ person.name }}</option>
+          {% endfor %}
         </select>
       </div>
     </div>
