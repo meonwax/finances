@@ -13,12 +13,18 @@ module.exports = function(grunt) {
       '<%= dirs.public %>/css/'
     ],
     sass: {
+      options: {
+        includePaths: [
+          'node_modules/bootstrap-sass/assets/stylesheets'
+        ],
+      },
       dev: {
         files: {
           '<%= dirs.public %>/css/style.css': '<%= dirs.scss %>/style.scss'
         },
         options: {
-          style: 'expanded'
+          outputStyle: 'expanded',
+          sourceMap: true
         }
       },
       dist: {
@@ -26,8 +32,8 @@ module.exports = function(grunt) {
           '<%= dirs.public %>/css/style.css': '<%= dirs.scss %>/style.scss'
         },
         options: {
-          style: 'compressed',
-          sourcemap: 'none'
+          outputStyle: 'compressed',
+          sourceMap: false
         }
       }
     }
