@@ -6,9 +6,11 @@ $app->get('/', function ($request, $response, $args) {
 
 // Overview
 $app->get('/expenses[/]', function ($request, $response, $args) {
-  $expenses = Expense::orderBy('date', 'desc')->paginate(10);
+  $rows = $this->get('settings')['pager']['rows'];
+  $expenses = Expense::orderBy('date', 'desc')->paginate($rows);
   $vars = [
-    'expenses' => $expenses
+    'expenses' => $expenses,
+    'emptyRows' => count($expenses) - $rows
   ];
   return $this->view->render($response, 'overview.twig', $vars);
 });

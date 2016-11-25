@@ -58,6 +58,11 @@
         </tr>
         {% endfor %}
 
+        {# Insert some empty rows #}
+        {% for i in 0..emptyRows %}
+        <tr><td colspan="4">&nbsp;</td></tr>
+        {% endfor %}
+
       </tbody>
     </table>
   </div>
