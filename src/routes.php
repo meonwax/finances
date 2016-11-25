@@ -2,7 +2,7 @@
 // Home
 $app->get('/', function ($request, $response, $args) {
   return $response->withRedirect('/expenses');
-});
+})->setName('home');
 
 // Overview
 $app->get('/expenses[/]', function ($request, $response, $args) {
@@ -13,12 +13,12 @@ $app->get('/expenses[/]', function ($request, $response, $args) {
     'emptyRows' => count($expenses) - $rows
   ];
   return $this->view->render($response, 'overview.twig', $vars);
-});
+})->setName('overview');
 
 // New
 $app->get('/expenses/new[/]', function ($request, $response, $args) {
   return $this->view->render($response, 'new.twig');
-});
+})->setName('newExpense');
 
 // Create
 $app->post('/expenses', function ($request, $response, $args) {
@@ -28,5 +28,5 @@ $app->post('/expenses', function ($request, $response, $args) {
     $this->logger->debug($key . " : " . $param);
   }
   return $response->withRedirect('/expenses');
-});
+})->setName('createExpense');
 ?>
