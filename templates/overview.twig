@@ -73,7 +73,7 @@
             <span>&laquo;</span>
           </a>
         </li>
-        {% for i in 1..totalPages %}
+        {% for i in 1..expenses.lastPage() %}
         <li class="page-item {{ expenses.currentPage() == i ? 'active' }}">
           <a class="page-link" href="{{ expenses.url(i) }}">{{ i }}</a>
         </li>

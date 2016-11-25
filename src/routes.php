@@ -8,8 +8,7 @@ $app->get('/', function ($request, $response, $args) {
 $app->get('/expenses[/]', function ($request, $response, $args) {
   $expenses = Expense::orderBy('date', 'desc')->paginate(10);
   $vars = [
-    'expenses' => $expenses,
-    'totalPages' => ceil($expenses->total() / $expenses->perPage())
+    'expenses' => $expenses
   ];
   return $this->view->render($response, 'overview.twig', $vars);
 });
