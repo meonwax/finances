@@ -11,7 +11,7 @@ return [
     // Logging
     'logger' => [
       'name' => 'finances',
-      'path' => __DIR__ . '/../../logs/app.log',
+      'path' => __DIR__ . '/../../../../logs/app.log',
       'level' => \Monolog\Logger::DEBUG // Set to INFO in production
     ],
 

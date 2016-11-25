@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c2a85d3f37c587e667e1139d38e5b587",
-    "content-hash": "a111648f877d44ee4674f3360e67c451",
+    "hash": "8117de484c0551be101ecdaa512354e7",
+    "content-hash": "f55063edc3e77f611f6be074d6f16dca",
     "packages": [
         {
             "name": "container-interop/container-interop",

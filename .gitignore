@@ -2,4 +2,4 @@
 /logs/*
 /node_modules
 .sass-cache
-/public/css
+/src/main/public/css
