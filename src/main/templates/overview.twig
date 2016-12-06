@@ -26,7 +26,7 @@
 {# Overview table #}
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-hover">
+    <table class="table table-hover" id="overview">
       <thead class="thead-inverse">
         <tr>
           <th>Kategorie</th>
@@ -38,7 +38,7 @@
       <tbody>
 
         {% for expense in expenses %}
-        <tr>
+        <tr id="{{ expense.id }}">
           <td>
             <i class="fa fa-fw fa-{{ expense.category.class }}"></i>
             {{ expense.category.name }}
@@ -93,4 +93,13 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+$('#overview > tbody > tr').click(function() {
+  console.log(this.id);
+  location.href = '{{ path_for('editExpense', {'id': null}) }}' + this.id;
+});
+</script>
 {% endblock %}
