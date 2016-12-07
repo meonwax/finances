@@ -30,7 +30,11 @@ require __DIR__ . '/../app/models.php';
 require __DIR__ . '/../app/middleware.php';
 
 // Register routes
-require __DIR__ . '/../app/routes.php';
+require __DIR__ . '/../app/routes/home.php';
+require __DIR__ . '/../app/routes/expenses/overview.php';
+require __DIR__ . '/../app/routes/expenses/new.php';
+require __DIR__ . '/../app/routes/expenses/edit.php';
+require __DIR__ . '/../app/routes/expenses/remove.php';
 
 // Run app
 $app->run();
