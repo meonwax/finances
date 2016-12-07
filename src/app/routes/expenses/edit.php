@@ -24,6 +24,6 @@ $app->post('/expenses/{id}', function ($request, $response, $args) {
     $expense->person_id = $data['person'];
     $expense->save();
   }
-  return $response->withRedirect('/expenses');
+  return $response->withRedirect($this->get('router')->pathFor('overview'));
 })->setName('updateExpense');
 ?>

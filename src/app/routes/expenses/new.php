@@ -22,6 +22,6 @@ $app->post('/expenses[/]', function ($request, $response, $args) {
   $expense->category_id = $data['category'];
   $expense->person_id = $data['person'];
   $expense->save();
-  return $response->withRedirect('/expenses');
+  return $response->withRedirect($this->get('router')->pathFor('overview'));
 })->setName('createExpense');
 ?>

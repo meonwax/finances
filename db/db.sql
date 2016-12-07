@@ -4,7 +4,7 @@ CREATE TABLE `category` (
   `icon` varchar(255) NOT NULL,
   `class` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `expense` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE `expense` (
   KEY `person_id` (`person_id`),
   CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `expense_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`)
-)
+);
 
 CREATE TABLE `person` (
   `id` int(10) unsigned NOT NULL,
@@ -28,4 +28,4 @@ CREATE TABLE `person` (
   `icon` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
