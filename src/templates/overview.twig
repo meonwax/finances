@@ -5,12 +5,13 @@
 {# Button bar #}
 <div class="row">
   <div class="col-md-12">
-    <div class="btn-group" role="group">
-      <a class="btn btn-success" href="{{ path_for('newExpense') }}" role="button">Neuer Eintrag</a>
-      <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#filter">
-        <i class="fa fa-filter"></i>
-      </button>
-    </div>
+    <a class="btn btn-success" href="{{ path_for('newExpense') }}" role="button">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Neuer Eintrag
+    </a>
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#filter">
+      <i class="fa fa-filter"></i>
+    </button>
   </div>
 </div>
 

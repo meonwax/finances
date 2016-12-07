@@ -56,8 +56,14 @@ Eintrag bearbeiten
   {# Button bar #}
   <div class="row">
     <div class="col-md-12">
-      <button type="submit" class="btn btn-success">Speichern</button>
-      <a class="btn btn-default" href="{{ path_for('home') }}" role="button">Zurück</a>
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Speichern
+      </button>
+      <a class="btn btn-default" href="{{ path_for('home') }}" role="button">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Zurück
+      </a>
     </div>
   </div>
 
