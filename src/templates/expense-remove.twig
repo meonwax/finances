@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+{% block title %}
+Eintrag löschen
+{% endblock %}
+{% block content %}
+
+<form role="form" method="post" action="{{ path_for('deleteExpense', {'id': expense.id}) }}">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Eintrag wirklich löschen?</strong>
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>Beschreibung</dt>
+            <dd>{{ expense.description }}</dd>
+            <dt>Preis</dt>
+            <dd>{{ expense.price }}</dd>
+            <dt>Datum</dt>
+            <dd>{{ expense.date }}</dd>
+            <dt>Kategorie</dt>
+            <dd>{{ expense.category.name }}</dd>
+            <dt>Zuordnung</dt>
+            <dd>{{ expense.person.name }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-danger">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Löschen
+      </button>
+      <a class="btn btn-default" href="{{ path_for('home') }}" role="button">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Zurück
+      </a>
+    </div>
+  </div>
+
+</form>
+
+{% endblock %}

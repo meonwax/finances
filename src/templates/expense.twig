@@ -60,6 +60,12 @@ Eintrag bearbeiten
         <i class="fa fa-check" aria-hidden="true"></i>
         Speichern
       </button>
+      {% if action == constant('Action::Edit') %}
+      <a class="btn btn-danger" href="{{ path_for('removeExpense', {'id': expense.id}) }}" role="button">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Löschen
+      </a>
+      {% endif %}
       <a class="btn btn-default" href="{{ path_for('home') }}" role="button">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         Zurück
