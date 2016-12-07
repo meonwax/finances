@@ -5,8 +5,8 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     dirs: {
-      public: 'src/main/public',
-      scss: 'src/main/scss'
+      public: 'src/public',
+      scss: 'src/scss'
     },
     clean: [
       '.sass-cache',

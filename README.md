@@ -18,13 +18,9 @@ To run in development use one of the following commands:
 
     composer start
     # or
-    php -S 0.0.0.0:4000 -t src/main/public
+    php -S 0.0.0.0:4000 -t src/public
 
 Then open http://localhost:4000 in a web browser.
-
-Run this command to run the test suite *(currently disfunct)*:
-
-    composer test
 
 ## Production
 
