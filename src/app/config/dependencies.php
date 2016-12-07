@@ -7,9 +7,18 @@ $container['view'] = function ($container) {
   $view = new \Slim\Views\Twig('../templates', [
     'cache' => false
   ]);
+
   // Instantiate and add Slim specific extension
   $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
   $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+
+  // Set date formats
+  $settings = $container->get('settings')['format'];
+  $core = $view->getEnvironment()->getExtension('Twig_Extension_Core');
+  $core->setDateFormat($settings['date']);
+  $core->setTimezone($settings['timezone']);
+  $core->setNumberFormat($settings['numbers']['decimals'], $settings['numbers']['decimal_point'], $settings['numbers']['thousands_separator']);
+
   return $view;
 };
 

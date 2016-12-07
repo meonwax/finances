@@ -33,7 +33,7 @@
           <th>Kategorie</th>
           <th>Beschreibung</th>
           <th>Zuordnung</th>
-          <th class="text-xs-right">Preis</th>
+          <th class="text-right">Preis</th>
         </tr>
       </thead>
       <tbody>
@@ -55,7 +55,7 @@
             <i class="fa fa-fw fa-{{ expense.person.class }}"></i>
             {{ expense.person.name }}
           </td>
-          <td class="text-xs-right">{{ expense.price | number_format(2, ',', '.') }} €</td>
+          <td class="text-right">{{ expense.price | number_format() }} €</td>
         </tr>
         {% endfor %}
 

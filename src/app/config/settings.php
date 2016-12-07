@@ -30,6 +30,17 @@ return [
     // Pagination
     'pager' => [
       'rows' => 10
+    ],
+
+    // Formats
+    'format' => [
+      'date' => 'd.m.Y',
+      'timezone' => 'Europe/Berlin',
+      'numbers' => [
+        'decimals' => 2,
+        'decimal_point' => ',',
+        'thousands_separator' => '.'
+      ]
     ]
   ]
 ];
