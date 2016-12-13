@@ -20,6 +20,9 @@ $app = new \Slim\App($settings);
 // Set the default locale
 Locale::setDefault($settings['settings']['locale']);
 
+// Set up Twig extensions
+require __DIR__ . '/../app/extensions/currency.php';
+
 // Set up dependency injection container
 require __DIR__ . '/../app/config/dependencies.php';
 

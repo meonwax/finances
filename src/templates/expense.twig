@@ -23,7 +23,7 @@ Eintrag bearbeiten
         <label for="price">Preis</label>
         <div class="input-group">
           <input type="text" value="{{ expense.price }}" class="form-control" id="price" name="price" pattern="^(?:[1-9]\d*|0)?(?:\.\d+)?$" required>
-          <div class="input-group-addon">&euro;</div>
+          <div class="input-group-addon">{{ currencySymbol() }}</div>
         </div>
       </div>
 

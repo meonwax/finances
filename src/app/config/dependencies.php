@@ -15,9 +15,8 @@ $container['view'] = function ($container) {
   // Add Intl extension¶
   $view->addExtension(new Twig_Extensions_Extension_Intl());
 
-  // Set date formats
-  $settings = $container->get('settings')['format'];
-  $core = $view->getEnvironment()->getExtension('Twig_Extension_Core');
+  // Add custom extensions
+  $view->addExtension(new currencySymbol());
 
   return $view;
 };
