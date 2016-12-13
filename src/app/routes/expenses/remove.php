@@ -17,4 +17,3 @@ $app->post('/expenses/delete/{id}', function ($request, $response, $args) {
   }
   return $response->withRedirect($this->get('router')->pathFor('overview'));
 })->setName('deleteExpense');
-?>

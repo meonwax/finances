@@ -16,4 +16,3 @@ Paginator::currentPageResolver(function ($pageName) {
 Paginator::currentPathResolver(function () {
   return isset($_SERVER['REQUEST_URI']) ? strtok($_SERVER['REQUEST_URI'], '?') : '/';
 });
-?>

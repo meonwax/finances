@@ -8,4 +8,3 @@ $app->get('/expenses[/]', function ($request, $response, $args) {
   ];
   return $this->view->render($response, 'overview.twig', $vars);
 })->setName('overview');
-?>

@@ -26,4 +26,3 @@ $app->post('/expenses/{id}', function ($request, $response, $args) {
   }
   return $response->withRedirect($this->get('router')->pathFor('overview'));
 })->setName('updateExpense');
-?>

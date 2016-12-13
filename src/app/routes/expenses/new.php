@@ -24,4 +24,3 @@ $app->post('/expenses[/]', function ($request, $response, $args) {
   $expense->save();
   return $response->withRedirect($this->get('router')->pathFor('overview'));
 })->setName('createExpense');
-?>

@@ -26,4 +26,3 @@ class Expense extends \Illuminate\Database\Eloquent\Model {
     return $this->belongsTo('Person');
   }
 }
-?>
