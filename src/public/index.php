@@ -17,6 +17,9 @@ session_start();
 $settings = require __DIR__ . '/../app/config/settings.php';
 $app = new \Slim\App($settings);
 
+// Set the default locale
+Locale::setDefault($settings['settings']['locale']);
+
 // Set up dependency injection container
 require __DIR__ . '/../app/config/dependencies.php';
 

@@ -12,12 +12,12 @@ $container['view'] = function ($container) {
   $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
   $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
+  // Add Intl extension¶
+  $view->addExtension(new Twig_Extensions_Extension_Intl());
+
   // Set date formats
   $settings = $container->get('settings')['format'];
   $core = $view->getEnvironment()->getExtension('Twig_Extension_Core');
-  $core->setDateFormat($settings['date']);
-  $core->setTimezone($settings['timezone']);
-  $core->setNumberFormat($settings['numbers']['decimals'], $settings['numbers']['decimal_point'], $settings['numbers']['thousands_separator']);
 
   return $view;
 };
