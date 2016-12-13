@@ -17,9 +17,9 @@ Eintrag löschen
             <dt>Beschreibung</dt>
             <dd>{{ expense.description }}</dd>
             <dt>Preis</dt>
-            <dd>{{ expense.price | number_format() }} €</dd>
+            <dd>{{ expense.price | localizednumber('currency') }}</dd>
             <dt>Datum</dt>
-            <dd>{{ expense.date | date()}}</dd>
+            <dd>{{ expense.date | localizeddate('medium', 'none') }}</dd>
             <dt>Kategorie</dt>
             <dd>{{ expense.category.name }}</dd>
             <dt>Zuordnung</dt>

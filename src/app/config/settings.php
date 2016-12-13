@@ -29,7 +29,7 @@ return [
 
     // Pagination
     'pager' => [
-      'rows' => 10
+      'rows' => 15
     ],
 
     // Locale

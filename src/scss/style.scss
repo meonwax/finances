@@ -1,5 +1,30 @@
 @import "bootstrap";
 
-#overview > tbody > tr {
-    cursor: pointer;
+.row {
+  margin-top: 20px;
+}
+
+#overview {
+  thead {
+    th {
+      color: #fff;
+      background-color: #373a3c;
+    }
+  }
+
+  tbody {
+    tr {
+      th {
+        border: 0px;
+        padding-top: 20px;
+      }
+    }
+
+    tr[id] {
+      cursor: pointer;
+    }
+    tr[id]:hover {
+      background-color: $table-bg-hover;
+    }
+  }
 }

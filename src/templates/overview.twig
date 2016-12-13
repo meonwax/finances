@@ -19,16 +19,18 @@
 <div class="row collapse" id="filter">
   <div class="col-md-12">
     <div class="card card-block">
-      TODO: Filter
+      <span class="label label-info">
+        TODO: Filter
+      </span>
     </div>
   </div>
 </div>
 
-{# Overview table #}
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-hover" id="overview">
-      <thead class="thead-inverse">
+    {# Overview table #}
+    <table class="table" id="overview">
+      <thead>
         <tr>
           <th>Kategorie</th>
           <th>Beschreibung</th>
@@ -39,6 +41,11 @@
       <tbody>
 
         {% for expense in expenses %}
+        {% if expense.date != currentDate %}
+        <tr>
+          <th colspan="4">{{ expense.date | localizeddate('full', 'none') }}</th>
+        </tr>
+        {% endif %}
         <tr id="{{ expense.id }}">
           <td>
             <i class="fa fa-fw fa-{{ expense.category.class }}"></i>
@@ -55,22 +62,16 @@
             <i class="fa fa-fw fa-{{ expense.person.class }}"></i>
             {{ expense.person.name }}
           </td>
-          <td class="text-right">{{ expense.price | number_format() }} €</td>
+          <td class="text-right">{{ expense.price | localizednumber('currency') }}</td>
         </tr>
-        {% endfor %}
-
-        {# Insert some empty rows #}
-        {% for i in 0..emptyRows %}
-        <tr><td colspan="4">&nbsp;</td></tr>
+        {% set currentDate = expense.date %}
         {% endfor %}
 
       </tbody>
     </table>
   </div>
-</div>
 
-{# Pager #}
-<div class="row">
+  {# Pager #}
   <div class="col-md-12">
     <nav>
       <ul class="pagination">
@@ -99,8 +100,9 @@
 {% block scripts %}
 <script>
 $('#overview > tbody > tr').click(function() {
-  console.log(this.id);
-  location.href = '{{ path_for('editExpense', {'id': null}) }}' + this.id;
+  if(this.id) {
+    location.href = '{{ path_for('editExpense', {'id': null}) }}' + this.id;
+  }
 });
 </script>
 {% endblock %}
