@@ -1,5 +1,19 @@
 @import "bootstrap";
 
+$font-weight-light: 300;
+$font-weight-bold: 500;
+
+body,
+h3, h4, h5, h6 {
+  font-weight: $font-weight-light;
+}
+
+th, dt, label, strong,
+h1, h2,
+.btn, .input-group-addon {
+  font-weight: $font-weight-bold;
+}
+
 .row {
   margin-top: 20px;
 }
