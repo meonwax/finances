@@ -4,13 +4,15 @@ class L10nExtension extends Twig_Extension {
 
   public function getFilters() {
     return array(
-      new Twig_SimpleFilter('toLocalizedNumber', array($this, 'localizedNumber')),
+      new Twig_SimpleFilter('toLocalizedNumber', array($this, 'localizedNumber'))
     );
   }
 
   public function getFunctions() {
     return array(
-      'currencySymbol' => new Twig_Function_Method($this, 'currencySymbol'),
+      'decimalSeparator' => new Twig_Function_Method($this, 'decimalSeparator'),
+      'groupingSeparator' => new Twig_Function_Method($this, 'groupingSeparator'),
+      'currencySymbol' => new Twig_Function_Method($this, 'currencySymbol')
     );
   }
 
@@ -19,6 +21,16 @@ class L10nExtension extends Twig_Extension {
     $formatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $decimals);
     $formatter->setAttribute(NumberFormatter::MAX_FRACTION_DIGITS, $decimals);
     return $formatter->format($number);
+  }
+
+  public function decimalSeparator() {
+    $formatter = NumberFormatter::create(Locale::getDefault(), NumberFormatter::DECIMAL);
+    return $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
+  }
+
+  public function groupingSeparator() {
+    $formatter = NumberFormatter::create(Locale::getDefault(), NumberFormatter::DECIMAL);
+    return $formatter->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
   }
 
   public function currencySymbol() {

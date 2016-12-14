@@ -11,7 +11,6 @@
       background-color: #373a3c;
     }
   }
-
   tbody {
     tr {
       th {
@@ -19,7 +18,6 @@
         padding-top: 20px;
       }
     }
-
     tr[id] {
       cursor: pointer;
     }
@@ -27,4 +25,9 @@
       background-color: $table-bg-hover;
     }
   }
+}
+
+#validationMessages {
+  border-left: 5px solid $state-danger-text;
+  padding-left: 15px;
 }

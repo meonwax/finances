@@ -8,7 +8,7 @@ Eintrag bearbeiten
 {% endblock %}
 {% block content %}
 
-<form role="form" data-toggle="validator" method="post" action="{{ action == constant('Action::New') ? path_for('createExpense') : action == constant('Action::Edit') ? path_for('updateExpense', {'id': expense.id}) }}">
+<form role="form" method="post" action="{{ action == constant('Action::New') ? path_for('createExpense') : action == constant('Action::Edit') ? path_for('updateExpense', {'id': expense.id}) }}">
 
   {# Form #}
   <div class="row">
@@ -16,13 +16,13 @@ Eintrag bearbeiten
 
       <div class="form-group">
         <label for="description">Beschreibung</label>
-        <input type="text" value="{{ expense.description }}" class="form-control" id="description" name="description" data-minlength="2" autofocus required>
+        <input type="text" value="{{ expense.description }}" class="form-control" id="description" name="description" autofocus>
       </div>
 
       <div class="form-group">
         <label for="price">Preis</label>
         <div class="input-group">
-          <input type="text" value="{{ expense.price }}" class="form-control" id="price" name="price" pattern="^(?:[1-9]\d*|0)?(?:\.\d+)?$" required>
+          <input type="text" value="{{ expense.price ? expense.price | toLocalizedNumber(2) }}" class="form-control" id="price" name="price">
           <div class="input-group-addon">{{ currencySymbol() }}</div>
         </div>
       </div>
@@ -48,6 +48,10 @@ Eintrag bearbeiten
           <option value="{{ person.id }}" {{ person.id == expense.person.id ? 'selected' }}>{{ person.name }}</option>
           {% endfor %}
         </select>
+      </div>
+
+      <div class="form-group">
+        <div id="validationMessages"></div>
       </div>
 
     </div>
@@ -78,5 +82,13 @@ Eintrag bearbeiten
 {% endblock %}
 
 {% block scripts %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+<script src="/js/validator.js"></script>
+<script>
+var validator = new Validator('{{ decimalSeparator() }}', '{{ groupingSeparator() }}');
+$('form').submit(function(event) {
+  if(!validator.validateForm(this)) {
+    event.preventDefault();
+  }
+});
+</script>
 {% endblock %}
