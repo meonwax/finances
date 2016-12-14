@@ -16,7 +16,7 @@ $container['view'] = function ($container) {
   $view->addExtension(new Twig_Extensions_Extension_Intl());
 
   // Add custom extensions
-  $view->addExtension(new currencySymbol());
+  $view->addExtension(new L10nExtension());
 
   return $view;
 };
