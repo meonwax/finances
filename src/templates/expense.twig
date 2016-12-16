@@ -8,7 +8,7 @@ Eintrag bearbeiten
 {% endblock %}
 {% block content %}
 
-<form role="form" method="post" action="{{ action == constant('Action::New') ? path_for('createExpense') : action == constant('Action::Edit') ? path_for('updateExpense', {'id': expense.id}) }}">
+<form role="form" method="post" action="{{ action == 'new' ? path_for('expense.create') : action == 'edit' ? path_for('expense.update', {'id': expense.id}) }}">
 
   {# Form #}
   <div class="row">
@@ -29,7 +29,7 @@ Eintrag bearbeiten
 
       <div class="form-group">
         <label for="date">Datum</label>
-        <input type="date" value="{{ action == constant('Action::New') ? 'now' | date('Y-m-d') : action == constant('Action::Edit') ? expense.date }}" class="form-control" id="date" name="date">
+        <input type="date" value="{{ action == 'new' ? 'now' | date('Y-m-d') : action == 'edit' ? expense.date }}" class="form-control" id="date" name="date">
       </div>
 
       <div class="form-group">
@@ -64,13 +64,13 @@ Eintrag bearbeiten
         <i class="fa fa-check" aria-hidden="true"></i>
         Speichern
       </button>
-      {% if action == constant('Action::Edit') %}
-      <a class="btn btn-danger" href="{{ path_for('removeExpense', {'id': expense.id}) }}" role="button">
+      {% if action == 'edit' %}
+      <a class="btn btn-danger" href="{{ path_for('expense.remove', {'id': expense.id}) }}" role="button">
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Löschen
       </a>
       {% endif %}
-      <a class="btn btn-default" href="{{ path_for('home') }}" role="button">
+      <a class="btn btn-default" href="{{ path_for('expense.overview') }}" role="button">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         Zurück
       </a>

@@ -3,15 +3,10 @@ return [
   'settings' => [
     'displayErrorDetails' => true, // Set to false in production
 
-    // Templates
-    'renderer' => [
-      'template_path' => __DIR__ . '/../../templates/'
-    ],
-
     // Logging
     'logger' => [
       'name' => 'finances',
-      'path' => __DIR__ . '/../../../../logs/app.log',
+      'path' => __DIR__ . '/../../logs/app.log',
       'level' => \Monolog\Logger::DEBUG // Set to INFO in production
     ],
 

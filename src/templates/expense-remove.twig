@@ -4,7 +4,7 @@ Eintrag löschen
 {% endblock %}
 {% block content %}
 
-<form role="form" method="post" action="{{ path_for('deleteExpense', {'id': expense.id}) }}">
+<form role="form" method="post" action="{{ path_for('expense.delete', {'id': expense.id}) }}">
 
   <div class="row">
     <div class="col-md-12">
@@ -36,7 +36,7 @@ Eintrag löschen
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Löschen
       </button>
-      <a class="btn btn-default" href="{{ path_for('home') }}" role="button">
+      <a class="btn btn-default" href="{{ path_for('expense.overview') }}" role="button">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         Zurück
       </a>

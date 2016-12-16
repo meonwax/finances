@@ -8,6 +8,11 @@
         "illuminate/database": "^5.3",
         "illuminate/pagination": "^5.3"
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/app"
+        }
+    },
     "scripts": {
         "start": "php -S 0.0.0.0:4000 -t src/public"
     }

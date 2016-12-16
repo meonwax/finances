@@ -1,4 +1,11 @@
 <?php
+namespace App\Extension;
+
+use \Twig_Extension;
+use \Twig_SimpleFilter;
+use \Twig_Function_Method;
+use \NumberFormatter;
+use \Locale;
 
 class L10nExtension extends Twig_Extension {
 
