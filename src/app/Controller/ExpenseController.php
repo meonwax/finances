@@ -6,6 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use App\Model\Expense;
 use App\Model\Category;
 use App\Model\Person;
+use App\Helper\DateHelper;
 
 class ExpenseController extends Controller {
 
@@ -14,7 +15,9 @@ class ExpenseController extends Controller {
     $expenses = Expense::orderBy('date', 'desc')->paginate($rows);
     $vars = [
       'expenses' => $expenses,
-      'emptyRows' => count($expenses) - $rows
+      'categories' => Category::orderBy('id')->get(),
+      'persons' => Person::orderBy('id')->get(),
+      'months' => DateHelper::getMonths()
     ];
     return $this->view->render($response, 'overview.twig', $vars);
   }

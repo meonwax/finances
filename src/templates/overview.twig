@@ -18,11 +18,51 @@
 {# Filter #}
 <div class="row collapse" id="filter">
   <div class="col-md-12">
-    <div class="card card-block">
-      <span class="label label-info">
-        TODO: Filter
-      </span>
-    </div>
+    <form class="form-inline">
+      <div class="form-group">
+        <select class="form-control" name="filter-category">
+          <option value="">* Alle *</option>
+          {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" name="filter-person">
+          <option value="">* Alle *</option>
+          {% for person in persons %}
+          <option value="{{ person.id }}">{{ person.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" name="filter-month">
+          <option value="*">* Alle *</option>
+          {% for key, month in months %}
+          <option value="{{ key }}">{{ month }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" name="filter-year">
+          <option value="*">* Alle *</option>
+          {% set thisYear = 'now' | date('Y') %}
+          {% for year in thisYear..(thisYear - 10) %}
+          <option value="{{ year }}">{{ year }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <a class="btn btn-info" href="{{ path_for('expense.overview') }}" role="button">
+          <i class="fa fa-filter"></i>
+          Filtern
+        </a>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -99,6 +139,7 @@
 
 {% block scripts %}
 <script>
+// Make table row clickable
 $('#overview > tbody > tr').click(function() {
   if(this.id) {
     location.href = '{{ path_for('expense.edit', {'id': null}) }}' + this.id;
