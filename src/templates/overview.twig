@@ -23,7 +23,7 @@
         <select class="form-control" name="category">
           <option value="">* Alle *</option>
           {% for category in categories %}
-          <option value="{{ category.id }}">{{ category.name }}</option>
+          <option value="{{ category.id }}" {{ category.id == params.category ? 'selected' }}>{{ category.name }}</option>
           {% endfor %}
         </select>
       </div>
@@ -32,7 +32,7 @@
         <select class="form-control" name="person">
           <option value="">* Alle *</option>
           {% for person in persons %}
-          <option value="{{ person.id }}">{{ person.name }}</option>
+          <option value="{{ person.id }}" {{ person.id == params.person ? 'selected' }}>{{ person.name }}</option>
           {% endfor %}
         </select>
       </div>
@@ -41,7 +41,7 @@
         <select class="form-control" name="month">
           <option value="">* Alle *</option>
           {% for key, month in months %}
-          <option value="{{ key }}">{{ month }}</option>
+          <option value="{{ key }}" {{ key == params.month ? 'selected' }}>{{ month }}</option>
           {% endfor %}
         </select>
       </div>
@@ -51,7 +51,7 @@
           <option value="">* Alle *</option>
           {% set thisYear = 'now' | date('Y') %}
           {% for year in thisYear..(thisYear - 10) %}
-          <option value="{{ year }}">{{ year }}</option>
+          <option value="{{ year }}" {{ year == params.year ? 'selected' }}>{{ year }}</option>
           {% endfor %}
         </select>
       </div>

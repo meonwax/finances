@@ -31,6 +31,7 @@ class ExpenseController extends Controller {
       ->paginate($rows);
 
     $vars = [
+      'params' => $params,
       'expenses' => $expenses->appends($params),
       'categories' => Category::orderBy('id')->get(),
       'persons' => Person::orderBy('id')->get(),
