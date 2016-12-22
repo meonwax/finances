@@ -9,14 +9,38 @@
   <link href="/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel:700">
 </head>
 <body>
+
+  <header>
+    <div class="container">
+      <div class="title">
+        Finanzen
+        <i class="fa fa-eur" aria-hidden="true"></i>
+      </div>
+    </div>
+  </header>
+
   <div class="container">
-    <h1>Finanzen</h1>
     <h3>{{ block("title") }}</h3>
     <hr>
     {% block content %}{% endblock %}
   </div>
+
+  <footer>
+    <div class="container">
+      <p>
+        Created by Sebastian Wolf
+      </p>
+      <p>
+        Source available at
+        <i class="fa fa-github" aria-hidden="true"></i>
+        <a href="https://github.com/meonwax/finances" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script>
