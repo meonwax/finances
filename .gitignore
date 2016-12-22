@@ -2,3 +2,5 @@
 /node_modules
 .sass-cache
 /src/public/css
+/logs/*.log
+/src/app/settings-local.php
