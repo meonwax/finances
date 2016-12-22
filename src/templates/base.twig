@@ -19,6 +19,12 @@
   </div>
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script>
+  // Prevent click on disabled anchors
+  $('body').on('click', 'a.disabled, li.disabled a', function(event) {
+    event.preventDefault();
+  });
+  </script>
   {% block scripts %}{% endblock %}
 </body>
 </html>
