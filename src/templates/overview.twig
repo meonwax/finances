@@ -78,7 +78,7 @@
   <div class="col-md-12">
     {# Overview table #}
     <table class="table" id="overview">
-      <thead>
+      <thead class="hidden-xs">
         <tr>
           <th>Kategorie</th>
           <th>Beschreibung</th>
@@ -97,7 +97,7 @@
         <tr id="{{ expense.id }}">
           <td>
             <i class="fa fa-fw fa-{{ expense.category.class }}"></i>
-            {{ expense.category.name }}
+            <span class="hidden-xs">{{ expense.category.name }}</span>
           </td>
           <td>
             {% if expense.description %}
@@ -107,7 +107,7 @@
             {% endif %}
           </td>
           <td>
-            <i class="fa fa-fw fa-{{ expense.person.class }}"></i>
+            <i class="fa fa-fw fa-{{ expense.person.class }} hidden-xs"></i>
             {{ expense.person.name }}
           </td>
           <td class="text-right">{{ expense.price | localizednumber('currency') }}</td>
@@ -130,11 +130,12 @@
   {# Pager #}
   {% if expenses.lastPage() > 1 %}
   <div class="col-md-12">
-    <nav>
+
+    <nav class="hidden-xs">
       <ul class="pagination">
         <li class="page-item {{ expenses.currentPage() == 1 ? 'disabled' }}">
           <a class="page-link" href="{{ expenses.previousPageUrl() }}">
-            <span>&laquo;</span>
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
           </a>
         </li>
         {% for i in 1..expenses.lastPage() %}
@@ -144,11 +145,34 @@
         {% endfor %}
         <li class="page-item {{ not expenses.hasMorePages() ? 'disabled' }}">
           <a class="page-link" href="{{ expenses.nextPageUrl() }}">
-            <span>&raquo;</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
           </a>
         </li>
       </ul>
     </nav>
+
+    <nav class="visible-xs">
+      <ul class="pager">
+        <li class="previous {{ expenses.currentPage() == 1 ? 'disabled' }}">
+          <a href="{{ expenses.previousPageUrl() }}">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            Vorherige Seite
+          </a>
+        </li>
+        <li>
+          <span>
+            {{ expenses.currentPage() }}
+          </span>
+        </li>
+        <li class="next {{ not expenses.hasMorePages() ? 'disabled' }}">
+          <a href="{{ expenses.nextPageUrl() }}">
+            Nächste Seite
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
   </div>
   {% endif %}
 
