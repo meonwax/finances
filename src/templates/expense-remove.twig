@@ -4,7 +4,7 @@ Eintrag löschen
 {% endblock %}
 {% block content %}
 
-<form role="form" method="post" action="{{ path_for('expense.delete', {'id': expense.id}) }}">
+<form role="form" method="post" action="{{ path_for('expense.deletePost', {'id': expense.id}) }}">
 
   <div class="row">
     <div class="col-md-12">

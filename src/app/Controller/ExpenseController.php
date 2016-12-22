@@ -40,7 +40,7 @@ class ExpenseController extends Controller {
     return $this->view->render($response, 'overview.twig', $vars);
   }
 
-  public function new(Request $request, Response $response, $args) {
+  public function createGet(Request $request, Response $response, $args) {
     $vars = [
       'action' => 'new',
       'categories' => Category::orderBy('id')->get(),
@@ -49,7 +49,7 @@ class ExpenseController extends Controller {
     return $this->view->render($response, 'expense.twig', $vars);
   }
 
-  public function create(Request $request, Response $response, $args) {
+  public function createPost(Request $request, Response $response, $args) {
     $data = $request->getParsedBody();
     $expense = new Expense;
     $expense->date = $data['date'];
@@ -61,10 +61,10 @@ class ExpenseController extends Controller {
     return $response->withRedirect($this->router->pathFor('expense.overview'));
   }
 
-  public function edit(Request $request, Response $response, $args) {
+  public function updateGet(Request $request, Response $response, $args) {
     $expense = Expense::find($args['id']);
     if(!$expense) {
-      return $this->get('notFoundHandler')($request, $response);
+      return call_user_func($this->ci->get('notFoundHandler'), $request, $response);
     }
     $vars = [
       'action' => 'edit',
@@ -75,7 +75,7 @@ class ExpenseController extends Controller {
     return $this->view->render($response, 'expense.twig', $vars);
   }
 
-  public function update(Request $request, Response $response, $args) {
+  public function updatePost(Request $request, Response $response, $args) {
     $expense = Expense::find($args['id']);
     if($expense) {
       $data = $request->getParsedBody();
@@ -86,13 +86,13 @@ class ExpenseController extends Controller {
       $expense->person_id = $data['person'];
       $expense->save();
     }
-    return $response->withRedirect($this->get('router')->pathFor('expense.overview'));
+    return $response->withRedirect($this->router->pathFor('expense.overview'));
   }
 
-  public function remove(Request $request, Response $response, $args) {
+  public function deleteGet(Request $request, Response $response, $args) {
     $expense = Expense::find($args['id']);
     if(!$expense) {
-      return $this->get('notFoundHandler')($request, $response);
+      return call_user_func($this->ci->get('notFoundHandler'), $request, $response);
     }
     $vars = [
       'expense' => $expense
@@ -100,11 +100,11 @@ class ExpenseController extends Controller {
     return $this->view->render($response, 'expense-remove.twig', $vars);
   }
 
-  public function delete(Request $request, Response $response, $args) {
+  public function deletePost(Request $request, Response $response, $args) {
     $expense = Expense::find($args['id']);
     if($expense) {
       $expense->delete();
     }
-    return $response->withRedirect($this->get('router')->pathFor('expense.overview'));
+    return $response->withRedirect($this->router->pathFor('expense.overview'));
   }
 }

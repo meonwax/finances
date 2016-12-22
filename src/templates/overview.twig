@@ -5,7 +5,7 @@
 {# Button bar #}
 <div class="row">
   <div class="col-md-12">
-    <a class="btn btn-success" href="{{ path_for('expense.new') }}" role="button">
+    <a class="btn btn-success" href="{{ path_for('expense.createGet') }}" role="button">
       <i class="fa fa-plus" aria-hidden="true"></i>
       Neuer Eintrag
     </a>
@@ -185,7 +185,7 @@
 // Make table row clickable
 $('#overview > tbody > tr').click(function() {
   if(this.id) {
-    location.href = '{{ path_for('expense.edit', {'id': null}) }}' + this.id;
+    location.href = '{{ path_for('expense.updateGet', {'id': null}) }}' + this.id;
   }
 });
 

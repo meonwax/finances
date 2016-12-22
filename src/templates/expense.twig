@@ -8,7 +8,7 @@ Eintrag bearbeiten
 {% endblock %}
 {% block content %}
 
-<form role="form" method="post" action="{{ action == 'new' ? path_for('expense.create') : action == 'edit' ? path_for('expense.update', {'id': expense.id}) }}">
+<form role="form" method="post" action="{{ action == 'new' ? path_for('expense.createPost') : action == 'edit' ? path_for('expense.updatePost', {'id': expense.id}) }}">
 
   {# Form #}
   <div class="row">
@@ -65,7 +65,7 @@ Eintrag bearbeiten
         Speichern
       </button>
       {% if action == 'edit' %}
-      <a class="btn btn-danger" href="{{ path_for('expense.remove', {'id': expense.id}) }}" role="button">
+      <a class="btn btn-danger" href="{{ path_for('expense.deleteGet', {'id': expense.id}) }}" role="button">
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Löschen
       </a>
