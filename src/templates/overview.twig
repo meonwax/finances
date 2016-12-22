@@ -73,6 +73,8 @@
 </div>
 
 <div class="row">
+
+  {% if expenses | length > 0 %}
   <div class="col-md-12">
     {# Overview table #}
     <table class="table" id="overview">
@@ -116,6 +118,14 @@
       </tbody>
     </table>
   </div>
+
+  {% else %}
+  <div class="col-md-12">
+    <div class="well well-sm">
+      Es wurden keine Datensätze zu den Filterkriterien gefunden.
+    </div>
+  </div>
+  {% endif %}
 
   {# Pager #}
   {% if expenses.lastPage() > 1 %}
