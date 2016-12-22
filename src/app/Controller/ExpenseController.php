@@ -11,10 +11,27 @@ use App\Helper\DateHelper;
 class ExpenseController extends Controller {
 
   public function overview(Request $request, Response $response, $args) {
+
+    $params = $request->getQueryParams();
+
     $rows = $this->ci->get('settings')['pager']['rows'];
-    $expenses = Expense::orderBy('date', 'desc')->paginate($rows);
+    $expenses = Expense::orderBy('date', 'desc')
+      ->when(!empty($params['category']), function($query) use($params) {
+        return $query->where('category_id', $params['category']);
+      })
+      ->when(!empty($params['person']), function($query) use($params) {
+        return $query->where('person_id', $params['person']);
+      })
+      ->when(!empty($params['month']), function($query) use($params) {
+        return $query->whereMonth('date', $params['month']);
+      })
+      ->when(!empty($params['year']), function($query) use($params) {
+        return $query->whereYear('date', $params['year']);
+      })
+      ->paginate($rows);
+
     $vars = [
-      'expenses' => $expenses,
+      'expenses' => $expenses->appends($params),
       'categories' => Category::orderBy('id')->get(),
       'persons' => Person::orderBy('id')->get(),
       'months' => DateHelper::getMonths()

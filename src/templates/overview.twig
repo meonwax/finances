@@ -20,7 +20,7 @@
   <div class="col-md-12">
     <form class="form-inline">
       <div class="form-group">
-        <select class="form-control" name="filter-category">
+        <select class="form-control" name="category">
           <option value="">* Alle *</option>
           {% for category in categories %}
           <option value="{{ category.id }}">{{ category.name }}</option>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="form-group">
-        <select class="form-control" name="filter-person">
+        <select class="form-control" name="person">
           <option value="">* Alle *</option>
           {% for person in persons %}
           <option value="{{ person.id }}">{{ person.name }}</option>
@@ -38,8 +38,8 @@
       </div>
 
       <div class="form-group">
-        <select class="form-control" name="filter-month">
-          <option value="*">* Alle *</option>
+        <select class="form-control" name="month">
+          <option value="">* Alle *</option>
           {% for key, month in months %}
           <option value="{{ key }}">{{ month }}</option>
           {% endfor %}
@@ -47,8 +47,8 @@
       </div>
 
       <div class="form-group">
-        <select class="form-control" name="filter-year">
-          <option value="*">* Alle *</option>
+        <select class="form-control" name="year">
+          <option value="">* Alle *</option>
           {% set thisYear = 'now' | date('Y') %}
           {% for year in thisYear..(thisYear - 10) %}
           <option value="{{ year }}">{{ year }}</option>
@@ -57,9 +57,15 @@
       </div>
 
       <div class="form-group">
-        <a class="btn btn-info" href="{{ path_for('expense.overview') }}" role="button">
+        <button type="button" class="btn btn-info">
           <i class="fa fa-filter"></i>
           Filtern
+        </button>
+      </div>
+      <div class="form-group">
+        <a class="btn btn-default" href="{{ path_for('expense.overview') }}" role="button">
+          <i class="fa fa-undo" aria-hidden="true"></i>
+          Reset
         </a>
       </div>
     </form>
@@ -144,6 +150,11 @@ $('#overview > tbody > tr').click(function() {
   if(this.id) {
     location.href = '{{ path_for('expense.edit', {'id': null}) }}' + this.id;
   }
+});
+
+// Serialize form fields on filter button click
+$('#filter button').click(function() {
+  location.href = '{{ path_for('expense.overview') }}?' + $('#filter form').serialize();
 });
 </script>
 {% endblock %}
