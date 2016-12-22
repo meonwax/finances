@@ -118,6 +118,7 @@
   </div>
 
   {# Pager #}
+  {% if expenses.lastPage() > 1 %}
   <div class="col-md-12">
     <nav>
       <ul class="pagination">
@@ -139,6 +140,8 @@
       </ul>
     </nav>
   </div>
+  {% endif %}
+
 </div>
 
 {% endblock %}
