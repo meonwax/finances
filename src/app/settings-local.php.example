@@ -1,0 +1,15 @@
+<?php
+return [
+  'settings' => [
+    'displayErrorDetails' => false,
+    'logger' => [
+      'level' => \Monolog\Logger::INFO
+    ],
+    'db' => [
+      'host' => 'localhost',
+      'database' => 'finances',
+      'username' => 'root',
+      'password' => 'secret'
+    ]
+  ]
+];

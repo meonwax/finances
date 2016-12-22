@@ -13,8 +13,15 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 session_start();
 
-// Instantiate the app
+// Retrieve and merge settings
 $settings = require __DIR__ . '/../app/settings.php';
+$localSettingsFile = __DIR__ . '/../app/settings-local.php';
+if(file_exists($localSettingsFile)) {
+  $localSettings = require $localSettingsFile;
+  $settings = Zend\Stdlib\ArrayUtils::merge($settings, $localSettings);
+}
+
+// Instantiate the app
 $app = new \Slim\App($settings);
 
 // Set up dependencies
