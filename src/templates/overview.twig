@@ -16,7 +16,7 @@
 </div>
 
 {# Filter #}
-<div class="row collapse" id="filter">
+<div class="row {{ params.category is empty and params.person is empty and params.month is empty and params.year is empty ? 'collapse' }}" id="filter">
   <div class="col-md-12">
     <form class="form-inline">
       <div class="form-group">
