@@ -1,5 +1,4 @@
 /vendor
-/logs/*
 /node_modules
 .sass-cache
 /src/public/css
