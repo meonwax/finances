@@ -26,4 +26,4 @@ Then open http://localhost:4000 in a web browser.
 
 Point your virtual host document root to the application's `src/public/` directory and ensure `logs/` is web writeable.
 
-Rename `src/app/settings-local.php.example` to `src/app/settings-local.php` and apply your production settings.
+Copy `src/app/settings-local.php.example` to `src/app/settings-local.php` and apply your production settings.
