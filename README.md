@@ -2,9 +2,16 @@
 
 My personal expenses tracking using the PHP Slim Framework with Laravel's Eloquent as database provider and Twig as template engine.
 
+## Dependencies
+
+- PHP 5.5 or greater
+- MySQL or MariaDB database
+- [Composer](https://getcomposer.org/) dependency manager for PHP
+- `intl` and `pdo_mysql` PHP extensions
+
 ## Setup
 
-Install 3rd party dependencies using [Composer](https://getcomposer.org) dependency manager:
+Install 3rd party PHP dependencies using Composer:
 
     composer install
 
