@@ -115,6 +115,13 @@
         {% set currentDate = expense.date %}
         {% endfor %}
 
+        {# Sum line #}
+        {% if params.category is not empty or params.person is not empty or params.month is not empty or params.year is not empty %}
+        <tr>
+          <th colspan="4" class="text-info">Summe: {{ priceSum | localizednumber('currency') }}</th>
+        </tr>
+        {% endif %}
+
       </tbody>
     </table>
   </div>

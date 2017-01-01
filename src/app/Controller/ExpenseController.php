@@ -14,8 +14,8 @@ class ExpenseController extends Controller {
 
     $params = $request->getQueryParams();
 
-    $rows = $this->ci->get('settings')['pager']['rows'];
-    $expenses = Expense::orderBy('date', 'desc')
+    $rows = $this->settings['pager']['rows'];
+    $queryBuilder = Expense::orderBy('date', 'desc')
       ->when(!empty($params['category']), function($query) use($params) {
         return $query->where('category_id', $params['category']);
       })
@@ -27,15 +27,17 @@ class ExpenseController extends Controller {
       })
       ->when(!empty($params['year']), function($query) use($params) {
         return $query->whereYear('date', $params['year']);
-      })
-      ->paginate($rows);
+      });
+    $priceSum = $queryBuilder->sum('price');
+    $expenses = $queryBuilder->paginate($rows);
 
     $vars = [
       'params' => $params,
       'expenses' => $expenses->appends($params),
       'categories' => Category::orderBy('id')->get(),
       'persons' => Person::orderBy('id')->get(),
-      'months' => DateHelper::getMonths()
+      'months' => DateHelper::getMonths(),
+      'priceSum' => $priceSum
     ];
     return $this->view->render($response, 'overview.twig', $vars);
   }
