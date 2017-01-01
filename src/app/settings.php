@@ -15,8 +15,8 @@ return [
       'driver' => 'mysql',
       'host' => 'localhost',
       'database' => 'finances',
-      'username' => 'root',
-      'password' => 'default',
+      'username' => 'finances',
+      'password' => 's3cret',
       'charset'   => 'utf8',
       'collation' => 'utf8_unicode_ci',
       'prefix'    => ''
@@ -24,7 +24,8 @@ return [
 
     // Pagination
     'pager' => [
-      'rows' => 15
+      'rows' => 15,
+      'visible-links' => 10
     ],
 
     // Locale

@@ -18,6 +18,9 @@ $container['view'] = function($container) {
   // Add custom extensions
   $view->addExtension(new App\Extension\L10nExtension());
 
+  // Globally add settings array to all templates
+  $view->getEnvironment()->addGlobal('settings', $container->get('settings'));
+
   return $view;
 };
 
@@ -38,11 +41,11 @@ $container['notFoundHandler'] = function($container) {
 };
 
 // Set default locale
-Locale::setDefault($settings['settings']['locale']);
+Locale::setDefault($container->get('settings')['locale']);
 
 // Bootstrap Eloquent ORM
 $capsule = new \Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container['settings']['db']);
+$capsule->addConnection($container->get('settings')['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 

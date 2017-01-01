@@ -138,7 +138,10 @@
             <i class="fa fa-angle-double-left" aria-hidden="true"></i>
           </a>
         </li>
-        {% for i in 1..expenses.lastPage() %}
+        {% set links = settings['pager']['visible-links'] %}
+        {% set startPage = expenses.currentPage() <= links / 2 ? 1 : expenses.currentPage() - links / 2 %}
+        {% set endPage = expenses.lastPage() > startPage + links - 1 ? startPage + links - 1 : expenses.lastPage() %}
+        {% for i in startPage..endPage %}
         <li class="page-item {{ expenses.currentPage() == i ? 'active' }}">
           <a class="page-link" href="{{ expenses.url(i) }}">{{ i }}</a>
         </li>
