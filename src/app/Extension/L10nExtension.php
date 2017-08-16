@@ -3,7 +3,7 @@ namespace App\Extension;
 
 use \Twig_Extension;
 use \Twig_SimpleFilter;
-use \Twig_Function_Method;
+use \Twig_SimpleFunction;
 use \NumberFormatter;
 use \Locale;
 
@@ -17,9 +17,9 @@ class L10nExtension extends Twig_Extension {
 
   public function getFunctions() {
     return array(
-      'decimalSeparator' => new Twig_Function_Method($this, 'decimalSeparator'),
-      'groupingSeparator' => new Twig_Function_Method($this, 'groupingSeparator'),
-      'currencySymbol' => new Twig_Function_Method($this, 'currencySymbol')
+      new Twig_SimpleFunction('decimalSeparator', array($this, 'decimalSeparator')),
+      new Twig_SimpleFunction('groupingSeparator', array($this, 'groupingSeparator')),
+      new Twig_SimpleFunction('currencySymbol', array($this, 'currencySymbol'))
     );
   }
 
