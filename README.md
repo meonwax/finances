@@ -17,9 +17,17 @@ Install 3rd party PHP dependencies using Composer:
 
 Create database using the scripts in `db/`.
 
-Customize configuration in `src/config/settings.php`.
+Customize configuration in `src/app/settings.php`.
+
+Install node dependencies:
+
+    npm install
 
 ## Development
+
+Build CSS from SASS:
+
+    grunt dev
 
 To run in development use one of the following commands:
 
@@ -30,6 +38,10 @@ To run in development use one of the following commands:
 Then open http://localhost:4000 in a web browser.
 
 ## Production
+
+Build CSS from SASS:
+
+    grunt
 
 Point your virtual host document root to the application's `src/public/` directory and ensure `logs/` is web writeable.
 
